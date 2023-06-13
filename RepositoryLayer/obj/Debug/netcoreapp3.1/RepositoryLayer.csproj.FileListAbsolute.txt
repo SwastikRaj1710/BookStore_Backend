@@ -1,0 +1,16 @@
+D:\BridgeLabz\Book_Store_Application\RepositoryLayer\bin\Debug\netcoreapp3.1\RepositoryLayer.deps.json
+D:\BridgeLabz\Book_Store_Application\RepositoryLayer\bin\Debug\netcoreapp3.1\RepositoryLayer.runtimeconfig.json
+D:\BridgeLabz\Book_Store_Application\RepositoryLayer\bin\Debug\netcoreapp3.1\RepositoryLayer.runtimeconfig.dev.json
+D:\BridgeLabz\Book_Store_Application\RepositoryLayer\bin\Debug\netcoreapp3.1\RepositoryLayer.dll
+D:\BridgeLabz\Book_Store_Application\RepositoryLayer\bin\Debug\netcoreapp3.1\RepositoryLayer.pdb
+D:\BridgeLabz\Book_Store_Application\RepositoryLayer\obj\Debug\netcoreapp3.1\RepositoryLayer.csproj.AssemblyReference.cache
+D:\BridgeLabz\Book_Store_Application\RepositoryLayer\obj\Debug\netcoreapp3.1\RepositoryLayer.GeneratedMSBuildEditorConfig.editorconfig
+D:\BridgeLabz\Book_Store_Application\RepositoryLayer\obj\Debug\netcoreapp3.1\RepositoryLayer.AssemblyInfoInputs.cache
+D:\BridgeLabz\Book_Store_Application\RepositoryLayer\obj\Debug\netcoreapp3.1\RepositoryLayer.AssemblyInfo.cs
+D:\BridgeLabz\Book_Store_Application\RepositoryLayer\obj\Debug\netcoreapp3.1\RepositoryLayer.csproj.CoreCompileInputs.cache
+D:\BridgeLabz\Book_Store_Application\RepositoryLayer\obj\Debug\netcoreapp3.1\RepositoryLayer.dll
+D:\BridgeLabz\Book_Store_Application\RepositoryLayer\obj\Debug\netcoreapp3.1\RepositoryLayer.pdb
+D:\BridgeLabz\Book_Store_Application\RepositoryLayer\obj\Debug\netcoreapp3.1\RepositoryLayer.genruntimeconfig.cache
+D:\BridgeLabz\Book_Store_Application\RepositoryLayer\bin\Debug\netcoreapp3.1\CommonLayer.dll
+D:\BridgeLabz\Book_Store_Application\RepositoryLayer\bin\Debug\netcoreapp3.1\CommonLayer.pdb
+D:\BridgeLabz\Book_Store_Application\RepositoryLayer\obj\Debug\netcoreapp3.1\RepositoryLayer.csproj.CopyComplete
