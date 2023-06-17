@@ -45,13 +45,13 @@ namespace Book_Store_Application.Controllers
         }
 
         [Authorize(Roles = "User")]
-        [HttpDelete("{wishlistItemId}")]
-        public IActionResult RemoveFromWishlist(int wishlistItemId)
+        [HttpDelete("{bookId}")]
+        public IActionResult RemoveFromWishlist(int bookId)
         {
             try
             {
                 var userId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier).Value);
-                var findWishlistItem = manager.DeleteItem(userId, wishlistItemId);
+                var findWishlistItem = manager.DeleteItem(userId, bookId);
                 if (findWishlistItem)
                 {
 

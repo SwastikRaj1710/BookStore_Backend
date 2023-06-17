@@ -8,7 +8,7 @@ namespace RepositoryLayer.Interface
     public interface IWishlistRepository
     {
         public WishlistEntity AddItem(int userId, int bookId);
-        public bool DeleteItem(int userId, int itemId);
+        public bool DeleteItem(int userId, int bookId);
         public List<WishlistEntity> GetAllItems(int userId);
 
     }

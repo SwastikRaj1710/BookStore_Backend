@@ -21,17 +21,21 @@ namespace ManagerLayer.Services
         {
             return repository.AddItem(userId, bookId);
         }
-        public CartEntity UpdateQuantity(int userId, int itemId, CartItemModel model)
+        public CartEntity UpdateQuantity(int userId, int bookId, CartItemModel model)
         {
-            return repository.UpdateQuantity(userId, itemId, model);
+            return repository.UpdateQuantity(userId, bookId, model);
         }
-        public bool DeleteItem(int userId, int itemId)
+        public bool DeleteItem(int userId, int bookId)
         {
-            return repository.DeleteItem(userId, itemId);
+            return repository.DeleteItem(userId, bookId);
         }
         public List<CartEntity> GetAllItems(int userId)
         {
             return repository.GetAllItems(userId);
+        }
+        public bool RemoveAllItems()
+        {
+            return repository.RemoveAllItems();
         }
     }
 }

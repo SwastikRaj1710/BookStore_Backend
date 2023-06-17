@@ -83,5 +83,29 @@ namespace Book_Store_Application.Controllers
                 throw;
             }
         }
+
+        [Authorize]
+        [HttpGet]
+        public IActionResult GetUserDetails()
+        {
+            try
+            {
+                var userId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+                var userDetails = manager.GetDetails(userId);
+                if(userDetails != null)
+                {
+                    return Ok(new ResponseModel<UserEntity> { Status = true, Message = "Fetched user details from db", Data=userDetails });
+                }
+                else
+                {
+                    return BadRequest(new ResponseModel<UserEntity> { Status = false, Message = "Unable to fetch user details from the db", Data = null });
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

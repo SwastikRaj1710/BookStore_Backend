@@ -22,18 +22,30 @@ namespace RepositoryLayer.Services
         {
             try
             {
-                CartEntity entity = new CartEntity();
-                entity.BookId = bookId;
-                entity.UserId = userId;
-                entity.Quantity = 1;
-                var check = context.Cart.Add(entity);
-                context.SaveChanges();
-
-                if(check!=null)
+                if(context.Cart.Any(x => x.BookId == bookId))
                 {
-                    return entity;
+                    CartEntity cart = context.Cart.FirstOrDefault(x => x.BookId == bookId);
+                    CartItemModel item = new CartItemModel();
+                    item.Quantity = cart.Quantity + 1;
+                    UpdateQuantity(userId, bookId, item);
+                    return cart;
                 }
-                else { return entity; }
+                else
+                {
+                    CartEntity entity = new CartEntity();
+                    entity.BookId = bookId;
+                    entity.UserId = userId;
+                    entity.Quantity = 1;
+                    var check = context.Cart.Add(entity);
+                    context.SaveChanges();
+
+                    if (check != null)
+                    {
+                        return entity;
+                    }
+                    else { return null; }
+                }
+                
             }
             catch (Exception)
             {
@@ -42,11 +54,11 @@ namespace RepositoryLayer.Services
             }
         }
 
-        public CartEntity UpdateQuantity(int userId, int itemId, CartItemModel model)
+        public CartEntity UpdateQuantity(int userId, int bookId, CartItemModel model)
         {
             try
             {
-                var CartItemDetails = context.Cart.FirstOrDefault(x => x.UserId == userId && x.CartItemId == itemId);
+                var CartItemDetails = context.Cart.FirstOrDefault(x => x.UserId == userId && x.BookId == bookId);
                 if(CartItemDetails!=null)
                 {
                     CartItemDetails.Quantity = model.Quantity;
@@ -66,11 +78,11 @@ namespace RepositoryLayer.Services
             }
         }
 
-        public bool DeleteItem(int userId, int itemId)
+        public bool DeleteItem(int userId, int bookId)
         {
             try
             {
-                var CartItemDetails = context.Cart.FirstOrDefault(x => x.UserId == userId && x.CartItemId == itemId);
+                var CartItemDetails = context.Cart.FirstOrDefault(x => x.UserId == userId && x.BookId == bookId);
                 if (CartItemDetails != null)
                 {
                     context.Cart.Remove(CartItemDetails);
@@ -96,6 +108,32 @@ namespace RepositoryLayer.Services
             }
             catch (Exception)
             {
+                throw;
+            }
+        }
+
+        public bool RemoveAllItems()
+        {
+            try
+            {
+                if(context.Cart.Count()>0)
+                {
+                    foreach (var item in context.Cart)
+                    {
+                        context.Cart.Remove(item);
+                    }
+                    context.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+                
+            }
+            catch (Exception)
+            {
+
                 throw;
             }
         }

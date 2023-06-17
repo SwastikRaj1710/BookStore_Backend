@@ -8,7 +8,7 @@ namespace CommonLayer.Models
     {
         public enum ExceptionType
         {
-            ENTERED_DUPLICATE_ADMIN, ENTERED_DUPLICATE_USER, ENTERED_INVALID_EMAIL
+            ENTERED_DUPLICATE_ADMIN, ENTERED_DUPLICATE_USER, ENTERED_INVALID_EMAIL, ENTERED_DUPLICATE_BOOK
         }
 
         public ExceptionType type;

@@ -67,6 +67,29 @@ namespace Book_Store_Application.Controllers
             }
         }
 
+        [HttpGet("{bookId}")]
+        public IActionResult GetBookById(int bookId)
+        {
+            try
+            {
+                var book = new BookEntity();
+                book = manager.GetBookById(bookId);
+                if (book!=null)
+                {
+                    return Ok(new ResponseModel<BookEntity> { Status = true, Message = "Fetched the Book", Data = book });
+                }
+                else
+                {
+                    return BadRequest(new ResponseModel<BookEntity> { Status = false, Message = "Unable to fetch book details", Data = null });
+                }
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+        }
+
         [Authorize(Roles = "Admin")]
         [HttpPut("{bookId}")]
         public IActionResult UpdateBook(int bookId, BookModel model)

@@ -26,6 +26,11 @@ namespace ManagerLayer.Services
             return repository.GetAllBooks();
         }
 
+        public BookEntity GetBookById(int id)
+        {
+            return repository.GetBookById(id);
+        }
+
         public BookEntity UpdateBook(int bookId, BookModel model)
         {
             return repository.UpdateBook(bookId, model);

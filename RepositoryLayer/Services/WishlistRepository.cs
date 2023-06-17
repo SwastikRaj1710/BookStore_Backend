@@ -1,4 +1,5 @@
-﻿using RepositoryLayer.BookStoreDBContext;
+﻿using CommonLayer.Models;
+using RepositoryLayer.BookStoreDBContext;
 using RepositoryLayer.Entity;
 using RepositoryLayer.Interface;
 using System;
@@ -21,6 +22,10 @@ namespace RepositoryLayer.Services
         {
             try
             {
+                if (context.Wishlist.Any(x => x.BookId == bookId))
+                {
+                    throw new InvalidInputException(InvalidInputException.ExceptionType.ENTERED_DUPLICATE_BOOK, "The selected book already exists in the wishlist.");
+                }
                 WishlistEntity entity = new WishlistEntity();
                 entity.BookId = bookId;
                 entity.UserId = userId;
@@ -40,11 +45,11 @@ namespace RepositoryLayer.Services
             }
         }
 
-        public bool DeleteItem(int userId, int itemId)
+        public bool DeleteItem(int userId, int bookId)
         {
             try
             {
-                var WishlistItemDetails = context.Wishlist.FirstOrDefault(x => x.UserId == userId && x.WishlistItemId == itemId);
+                var WishlistItemDetails = context.Wishlist.FirstOrDefault(x => x.UserId == userId && x.BookId == bookId);
                 if (WishlistItemDetails != null)
                 {
                     context.Wishlist.Remove(WishlistItemDetails);

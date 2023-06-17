@@ -48,13 +48,13 @@ namespace Book_Store_Application.Controllers
 
 
         [Authorize(Roles = "User")]
-        [HttpPut("{cartItemId}")]
-        public IActionResult UpdateQuantity(int cartItemId, CartItemModel model)
+        [HttpPut("{bookId}")]
+        public IActionResult UpdateQuantity(int bookId, CartItemModel model)
         {
             try
             {
                 var userId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier).Value);
-                var findCartItem = manager.UpdateQuantity(userId,cartItemId, model);
+                var findCartItem = manager.UpdateQuantity(userId, bookId, model);
                 if (findCartItem != null)
                 {
                     return Ok(new ResponseModel<CartEntity> { Status = true, Message = "Updated cart item details from db", Data = findCartItem });
@@ -71,13 +71,13 @@ namespace Book_Store_Application.Controllers
         }
 
         [Authorize(Roles = "User")]
-        [HttpDelete("{cartItemId}")]
-        public IActionResult RemoveFromCart(int cartItemId)
+        [HttpDelete("{bookId}")]
+        public IActionResult RemoveFromCart(int bookId)
         {
             try
             {
                 var userId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier).Value);
-                var findCartItem = manager.DeleteItem(userId, cartItemId);
+                var findCartItem = manager.DeleteItem(userId, bookId);
                 if (findCartItem)
                 {
 
@@ -114,6 +114,29 @@ namespace Book_Store_Application.Controllers
             }
             catch (Exception)
             {
+                throw;
+            }
+        }
+
+        [Authorize]
+        [HttpDelete]
+        public IActionResult GetItems()
+        {
+            try
+            {
+                var deleteResult = manager.RemoveAllItems();
+                if (deleteResult)
+                {
+                    return Ok(new ResponseModel<bool> { Status=true, Message="Cart Emptied successfully", Data=deleteResult });
+                }
+                else
+                {
+                    return BadRequest(new ResponseModel<bool> { Status = false, Message = "Cart Empty unsuccessful", Data = deleteResult });
+                }
+            }
+            catch (Exception)
+            {
+
                 throw;
             }
         }

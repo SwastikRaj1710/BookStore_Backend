@@ -60,6 +60,19 @@ namespace RepositoryLayer.Services
             }
         }
 
+        public BookEntity GetBookById(int id)
+        {
+            try
+            {
+                return context.Book.FirstOrDefault(x => x.BookId == id);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public BookEntity UpdateBook(int bookId, BookModel model)
         {
             try

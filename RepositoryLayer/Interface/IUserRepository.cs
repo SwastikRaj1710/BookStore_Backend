@@ -11,5 +11,6 @@ namespace RepositoryLayer.Interface
         public UserEntity Register(UserRegModel model);
         public string Login(UserLoginModel model);
         public UserEntity UpdateDetails(int userId, CustomerDetailsModel model);
+        public UserEntity GetDetails(int userId);
     }
 }

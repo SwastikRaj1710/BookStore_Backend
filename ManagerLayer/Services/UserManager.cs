@@ -29,5 +29,9 @@ namespace ManagerLayer.Services
         {
             return repository.UpdateDetails(userId, model);
         }
+        public UserEntity GetDetails(int userId)
+        {
+            return repository.GetDetails(userId);
+        }
     }
 }

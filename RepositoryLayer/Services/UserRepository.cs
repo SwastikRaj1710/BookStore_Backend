@@ -156,5 +156,18 @@ namespace RepositoryLayer.Services
                 throw;
             }
         }
+
+        public UserEntity GetDetails(int userId)
+        {
+            try
+            {
+                return context.User.FirstOrDefault(x => x.UserId == userId);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

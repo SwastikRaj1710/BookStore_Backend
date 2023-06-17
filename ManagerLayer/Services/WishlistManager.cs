@@ -20,9 +20,9 @@ namespace ManagerLayer.Services
         {
             return repository.AddItem(userId, bookId);
         }
-        public bool DeleteItem(int userId, int itemId)
+        public bool DeleteItem(int userId, int bookId)
         {
-            return repository.DeleteItem(userId, itemId);  
+            return repository.DeleteItem(userId, bookId);  
         }
         public List<WishlistEntity> GetAllItems(int userId)
         {
